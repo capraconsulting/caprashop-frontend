@@ -19,7 +19,8 @@ module.exports = function(grunt) {
                 },
                 files: [
                     '<%= config.app %>/{,*/}*.html',
-                    '<%= config.app %>/styles/{,*/}*.css'
+                    '<%= config.app %>/styles/{,*/}*.css',
+                    '<%= config.app %>/scripts/{,*/}*.js'
                 ]
             }
         },
@@ -37,11 +38,7 @@ module.exports = function(grunt) {
             }],
             livereload: {
                 options: {
-                    open: true,
-                    base: [
-                        '.tmp',
-                        '<%= config.app %>'
-                    ]
+                    open: true
                 },
                 middleware: function (connect, options) {
                     var middlewares = [];
