@@ -2,14 +2,21 @@ super-webshop-frontend
 ======================
 Bootcamp - repo for frontend
 
-1. Install npm dependencies
+* Install npm dependencies
 $npm install
 
-3. Install bower dependencies
+* Install bower dependencies
 $bower install
 
-2. Start the server
+* Install selenium drivers
+$npm run-script install
+
+* Start the server
 $grunt serve 
 
+*Run unit tests
+$grunt unit
 
+*Run e2e test
+$grun e2e
 
