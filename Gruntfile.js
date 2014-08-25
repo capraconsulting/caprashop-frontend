@@ -57,13 +57,38 @@ module.exports = function(grunt) {
 
                     return middlewares;
                 }
+            },
+            test: {
+                options: {
+                    port: 9001,
+                    base: [
+                        '<%= config.app %>'
+                    ]
+                }
             }
-        }
+        },
 
+        karma: {
+            unit: {
+                configFile: 'karma.conf.js',
+                singleRun: true
+            }
+        },
+        protractor: {
+            options: {
+                keepAlive: true,
+                configFile: "protractor.conf.js"
+            },
+            run: {}
+        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-protractor-runner');
+
+
 
     grunt.registerTask('serve', function (target) {
         grunt.task.run([
@@ -71,5 +96,9 @@ module.exports = function(grunt) {
             'watch'
         ]);
     });
-
+    grunt.registerTask('unit', ['karma']);
+    grunt.registerTask('e2e', [
+        'connect:test',
+        'protractor:run'
+    ]);
 };
